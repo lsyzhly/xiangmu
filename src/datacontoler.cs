@@ -111,4 +111,17 @@ class datacontrol{
 		}
 		return null;
 	}
+	public Car getCar(String carid)
+    {
+		cmd.CommandText=String.Format("select * from car where driverid=\'{0}\'",carid);
+		DbDataReader data=cmd.ExecuteReader();
+		if(data.Read()){
+			int caryear=data.GetInt32(1);
+			bool avaliable=data.GetBoolean(2);
+			bool insurance=data.GetBoolean(3);
+			bool yearCheck=data.GetBoolean(4);
+			return new Car(carid,caryear,avaliable,insurance,yearCheck);
+		}
+		return null;
+	}
 }
