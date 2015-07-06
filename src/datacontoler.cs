@@ -21,6 +21,11 @@ class datacontrol{
 		if(flag){
 			cmd.CommandText="create table driver(driverid varchar PRIMARY KEY,personid varchar not null,sex bool not null,name varchar not null,birthday char(8) not null,password varchar not null)";
 			cmd.ExecuteNonQuery();
+			
+			cmd.CommandText="create table adminstrator (id varcharPRIMARY KEY,password varchar not null)";
+			cmd.ExecuteNonQuery();
+			cmd.CommandText="insert into adminstrator values(\'adminstrator\',\'1234\')";
+			cmd.ExecuteNonQuery();
 			//TODO create the table
 		}
 	}
@@ -28,10 +33,16 @@ class datacontrol{
 		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}',{2},'{3}','{4}','{5}')",driverid,personid,sex,name,birthday,password);
 		cmd.ExecuteNonQuery();
 	}
-	void updateDriverName(string str){
-		name=str;
+	void insert(String id,String password){
+		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}')",id,password);
+		cmd.ExecuteNonQuery();
 	}
-	void updateDriverPassword(string str){
-		password=str;
+	void updateDriverName(String id,String str){
+		cmd.CommandText=String.Format("update driver set name='{0}' where driverid='{1}'",str,id);
+		cmd.ExecuteNonQuery();
+	}
+	void updateDriverPassword(String id,String str){
+		cmd.CommandText=String.Format("update driver set password='{0}' where driverid='{1}'",str,id);
+		cmd.ExecuteNonQuery();
 	}
 }

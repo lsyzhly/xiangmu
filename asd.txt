@@ -8,4 +8,4 @@
 car (carid varchar,caryear int,avaliable bool,insurancen bool,yearcheck bool)
 driver (driverid varchar,personid varchar,sex bool,name varchar,birthday char(8),password varchar)
 contract (carid varchar,driverid varchar,startdate char(8),enddate char(8),isagree bool,isvalid bool)
-adminstrator (id varchar.password varchar)
+adminstrator (id varchar,password varchar)
