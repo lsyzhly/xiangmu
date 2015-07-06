@@ -29,6 +29,6 @@ class datacontrol{
 		cmd.ExecuteNonQuery();
 	}
 	static void Main(string[] argvs){
-		
+		new datacontrol("asd.data");
 	}
 }
