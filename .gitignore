@@ -1,2 +1,4 @@
 *.dll
 *.data
+*.exe
+*.module

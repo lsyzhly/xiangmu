@@ -28,7 +28,4 @@ class datacontrol{
 		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}',{2},'{3}','{4}','{5}')",driverid,personid,sex,name,birthday,password);
 		cmd.ExecuteNonQuery();
 	}
-	static void Main(string[] argvs){
-		new datacontrol("asd.data");
-	}
 }
