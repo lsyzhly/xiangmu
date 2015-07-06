@@ -1,0 +1,11 @@
+合同 新增 修改 查询
+车辆 新增 修改 查询 车险保险 车辆检验
+驾驶员 新增 修改 查询 驾驶证 资格证 表扬
+公共信息 企业规章制度 通知 收费项目公示
+统计查询 合同 车辆 驾驶员
+系统 修改密码 保险公司
+
+car (carid varchar,caryear int,avaliable bool,insurancen bool,yearcheck bool)
+driver (driverid varchar,personid varchar,sex bool,name varchar,birthday char(8),password varchar)
+contract (carid varchar,driverid varchar,startdate char(8),enddate char(8),isagree bool,isvalid bool)
+adminstrator (id varchar.password varchar)
