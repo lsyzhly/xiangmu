@@ -29,20 +29,24 @@ class datacontrol{
 			//TODO create the table
 		}
 	}
-	void insert(String driverid,String personid,bool sex,String name,String birthday,String password){
-		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}',{2},'{3}','{4}','{5}')",driverid,personid,sex,name,birthday,password);
+	public void insert(String driverid,String personid,bool sex,String name,String birthday,String password){
+		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}',{2},'{3}','{4}','{5}')",driverid,personid,sex?1:0,name,birthday,password);
 		cmd.ExecuteNonQuery();
 	}
-	void insert(String id,String password){
-		cmd.CommandText=String.Format("insert into driver values ('{0}','{1}')",id,password);
+	public void insert(String id,String password){
+		cmd.CommandText=String.Format("insert into adminstrator values ('{0}','{1}')",id,password);
 		cmd.ExecuteNonQuery();
 	}
-	void updateDriverName(String id,String str){
+	public void updateDriverName(String id,String str){
 		cmd.CommandText=String.Format("update driver set name='{0}' where driverid='{1}'",str,id);
 		cmd.ExecuteNonQuery();
 	}
-	void updateDriverPassword(String id,String str){
+	public void updateDriverPassword(String id,String str){
 		cmd.CommandText=String.Format("update driver set password='{0}' where driverid='{1}'",str,id);
+		cmd.ExecuteNonQuery();
+	}
+	public void updateAdminstratorPassword(String id,String password){
+		cmd.CommandText=String.Format("update adminstrator set password='{0}' where id='{1}'",password,id);
 		cmd.ExecuteNonQuery();
 	}
 }
