@@ -30,7 +30,7 @@ class datacontrol{
 			cmd.CommandText="create table car(carid varchar primary key,caryear int,avaliable bool,insurancen bool,yearcheck bool)";
 			cmd.ExecuteNonQuery();
 			
-			cmd.CommandText="create table contract(carid varchar,driverid varchar,startdate char(8),enddate char(8),isagree bool,isvalid bool,PRIMARY KEY(carid,driverid,startdate))";
+			cmd.CommandText="create table contract(carid varchar,driverid varchar,startdate int,enddate int,isagree bool,isvalid bool,PRIMARY KEY(carid,driverid,startdate))";
 			cmd.ExecuteNonQuery();
 			//TODO create the table
 		}
@@ -51,8 +51,8 @@ class datacontrol{
 		cmd.CommandText = cmdTemp;
         cmd.ExecuteNonQuery();
 	}
-	public void insert(String carid,String driverid,String startdate,String enddata,bool isagree,bool isvalid){
-		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}','{2}','{3}',{4},{5})",carid,driverid,startdate,enddata,isagree?1:0,isvalid?1:0);
+	public void insert(String carid,String driverid,int startdate,int enddata,bool isagree,bool isvalid){
+		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}',{2},{3},{4},{5})",carid,driverid,startdate,enddata,isagree?1:0,isvalid?1:0);
 		cmd.ExecuteNonQuery();
 	}
 	public void updateDriverName(String id,String str){
@@ -89,12 +89,12 @@ class datacontrol{
 		cmd.CommandText = cmdTemp;
         cmd.ExecuteNonQuery();
 	}
-	public void updateContractIsagree(String carid,String driverid,String startdate,bool isagree){
-		cmd.CommandText=String.Format("update Contract set isagree={0} where carid='{1}' and driverid='{2}' and startdate={3}",isagree?1:0,carid,driverid,startdate);
+	public void updateContractIsagree(String carid,String driverid,int startdate,bool isagree){
+		cmd.CommandText=String.Format("update Contract set isagree={0} where carid='{1}' and driverid={2} and startdate={3}",isagree?1:0,carid,driverid,startdate);
         cmd.ExecuteNonQuery();
 	}
-	public void updateContractIsvalid(String carid,String driverid,String startdate,bool isvalid){
-		cmd.CommandText=String.Format("update Contract set isvalid={0} where carid='{1}' and driverid='{2}' and startdate={3}",isvalid?1:0,carid,driverid,startdate);
+	public void updateContractIsvalid(String carid,String driverid,int startdate,bool isvalid){
+		cmd.CommandText=String.Format("update Contract set isvalid={0} where carid='{1}' and driverid={2} and startdate={3}",isvalid?1:0,carid,driverid,startdate);
         cmd.ExecuteNonQuery();
 	}
 	
