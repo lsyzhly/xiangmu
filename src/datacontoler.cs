@@ -147,9 +147,9 @@ public class datacontrol{
 	public Contract getContract(String personid)
 	{
 		DateTime now = DateTime.Now;
-		String  tmp = now.ToString("yyyyMMdd");
-		int date = Convert.ToInt32(tmp);
-		cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={1} and isvalid = 1",date,date);
+	    string  tmp = now.ToString("yyyyMMdd");
+		int date = int.Parse(tmp);
+		cmd.CommandText = String.Format("select * from contract where driverid = '{0}' and startdate <={1} and enddate>={1} and isvalid = 1",personid,date);
 		DbDataReader data = cmd.ExecuteReader();
 		if(data.Read())
 		{
