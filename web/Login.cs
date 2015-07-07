@@ -3,21 +3,6 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-public class LoginEventArgs
-{
-    private bool LoginValid;
-
-    public LoginEventArgs (bool IsValid)
-    {
-        LoginValid = IsValid;
-    }
-
-    public bool IsValid
-    {
-        get { return LoginValid; }
-    }
-}
-
 public class UserLogin : UserControl
 {
     protected HtmlTable LoginTable;
@@ -43,16 +28,16 @@ public class UserLogin : UserControl
     }
 
     public delegate void LoginEventHandler (Object sender,
-        LoginEventArgs e);
+        String e);
 
     public event LoginEventHandler Login;
 
     public void OnLoginButtonClicked (Object sender, EventArgs e)
     {
         if (Login != null) {
-            bool IsValid = (Name.ToLower () == "asd" &&
-                Pas == "qwe");
-            Login (this, new LoginEventArgs (IsValid));
+			Driver a=new datacontrol("asd.data").getDriver(Name);
+            if(a!=null && a.password==Pas) Login (this,a,password);
+            else Login (this, null);
         }
     }
 }

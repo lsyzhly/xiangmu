@@ -1,5 +1,5 @@
 using System;
-class Contract{
+public class Contract{
 	String driverid;
 	String carid;
 	int startdate;

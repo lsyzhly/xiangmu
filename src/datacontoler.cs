@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.IO;
 using System.Data.SQLite;
 
-class datacontrol{
+public class datacontrol{
 	DbConnection connection;
 	DbCommand cmd;
 	public datacontrol(String path){
@@ -51,8 +51,8 @@ class datacontrol{
 		cmd.CommandText = cmdTemp;
         cmd.ExecuteNonQuery();
 	}
-	public void insert(String carid,String driverid,int startdate,int enddata,bool isagree,bool isvalid){
-		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}',{2},{3},{4},{5})",carid,driverid,startdate,enddata,isagree?1:0,isvalid?1:0);
+	public void insert(String carid,String driverid,int startdate,int enddate,bool isagree,bool isvalid){
+		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}',{2},{3},{4},{5})",carid,driverid,startdate,enddate,isagree?1:0,isvalid?1:0);
 		cmd.ExecuteNonQuery();
 	}
 	public void updateDriverName(String id,String str){
@@ -124,7 +124,6 @@ class datacontrol{
 		}
 		return null;
 	}
-	
 	public bool isContract(String driverid,int startdate,int end){
 		cmd.CommandText=String.Format("select count() from contract where driverid='{0}' and ((startdate>{1} and startdate<{2})or (enddate>{1} and enddate <{2}))",driverid,startdate,end);
 		int n=(int)cmd.ExecuteScalar();
@@ -141,7 +140,31 @@ class datacontrol{
 		DateTime dt = DateTime.Now;
 		nowDate=dt.ToString("yyyyMMdd");
 		tempDate=int.Parse(nowDate);
+		end=(end-(end-(end/10000)*10000))/10000;
 		cmdTemp=String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0",tempDate,end);
 		//TODO ... 
 	}
+	public Contract getContract(String personid)
+	{
+		DateTime now = DateTime.Now;
+		String  tmp = now.ToString("yyyyMMdd");
+		int date = Convert.ToInt32(tmp);
+		cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={1} and isvalid = 1",date,date);
+		DbDataReader data = cmd.ExecuteReader();
+		if(data.Read())
+		{
+			String carid = data.GetString(1);
+			String driverid = data.GetString(2);
+			int startdate = data.GetInt32(3);
+			int enddate = data.GetInt32(4);
+			bool isagree = data.GetBoolean(5);
+			bool isvalid = data.GetBoolean(6);
+			return new Contract(carid,driverid,startdate,enddate,isagree,isvalid);
+		}
+		return null;
+	}
+	public void getAllContract(String personid)
+	{
+	     cmd.CommandText = String.Format("select * from contract where personid = \'{0}\'",personid);
+    }
 }

@@ -14,10 +14,10 @@
 </html>
 
 <script language="C#" runat="server">
-  void OnLoginUser (Object sender, LoginEventArgs e)
+  void OnLoginUser (Object sender, String e)
   {
-      if (e.IsValid)
-          Output.Text = "Hello, " + Login.Name;
+      if (e!=null)
+          Output.Text = "Hello, " + e;
       else {
           Output.Text = "the id or password you input wrong!";
           Login.Name = "";

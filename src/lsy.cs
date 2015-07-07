@@ -1,11 +1,11 @@
 using System;
-class Driver{
+ public class Driver{
 	String driverid;
 	String personid;
 	bool sex;
 	String name;
 	String birthday;
-	String password;
+	public String password;
 	public Driver(String did,String pid,bool se,String na,String bith,String pass){
 		driverid=did;
 		personid=pid;
