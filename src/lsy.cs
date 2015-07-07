@@ -1,5 +1,5 @@
 using System;
-class Driver{
+ public class Driver{
 	String driverid;
 	String personid;
 	bool sex;

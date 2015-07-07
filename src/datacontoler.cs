@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.IO;
 using System.Data.SQLite;
 
-class datacontrol{
+public class datacontrol{
 	DbConnection connection;
 	DbCommand cmd;
 	public datacontrol(String path){
@@ -51,8 +51,8 @@ class datacontrol{
 		cmd.CommandText = cmdTemp;
         cmd.ExecuteNonQuery();
 	}
-	public void insert(String carid,String driverid,int startdate,int enddata,bool isagree,bool isvalid){
-		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}',{2},{3},{4},{5})",carid,driverid,startdate,enddata,isagree?1:0,isvalid?1:0);
+	public void insert(String carid,String driverid,int startdate,int enddate,bool isagree,bool isvalid){
+		cmd.CommandText=String.Format("insert into contract values ('{0}','{1}',{2},{3},{4},{5})",carid,driverid,startdate,enddate,isagree?1:0,isvalid?1:0);
 		cmd.ExecuteNonQuery();
 	}
 	public void updateDriverName(String id,String str){
@@ -144,7 +144,7 @@ class datacontrol{
 		cmdTemp=String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0",tempDate,end);
 		//TODO ... 
 	}
-	public Contract getContract(string personid)
+	public Contract getContract(String personid)
 	{
 		DateTime now = DateTime.Now;
 		String  tmp = now.ToString("yyyyMMdd");
@@ -163,4 +163,8 @@ class datacontrol{
 		}
 		return null;
 	}
+	public void getAllContract(String personid)
+	{
+	     cmd.CommandText = String.Format("select * from contract where personid = \'{0}\'",personid);
+    }
 }
