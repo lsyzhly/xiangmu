@@ -15,6 +15,13 @@ class test{
 		a.insert("G12345","M789",20151020,20171020,true,true);
 		a.avaliableCar(2020);
 		a.insert("J12345","H12345",20121010,20151010,true,true);
+		a.insert("H12312","M23455",20130305,20160305,true,true);
+		a.insert("J12345","H12344",20121010,20131010,true,true);
+		a.insert("J12345","H12345",20101010,20111010,true,true);
+		a.getContract("M23455");
+		a.getContract("H12345");
+		a.getContract("H12344");
+		a.getContract("M12345");
 		Console.Read();
 		
 	}
