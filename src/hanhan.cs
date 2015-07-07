@@ -1,5 +1,5 @@
 using System;
-class Car
+public class Car
 {
 	private String carid;
 	private int caryear;

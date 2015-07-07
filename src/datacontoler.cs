@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.IO;
 using System.Data.SQLite;
 
-class datacontrol{
+public class datacontrol{
 	DbConnection connection;
 	DbCommand cmd;
 	public datacontrol(String path){

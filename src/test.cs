@@ -15,7 +15,6 @@ class test{
 		a.insert("G12345","M789",20151020,20171020,true,true);
 		a.avaliableCar(2020);
 		a.insert("J12345","H12345",20121010,20151010,true,true);
-		a.getContract("H12345");
 		Console.Read();
 		
 	}
