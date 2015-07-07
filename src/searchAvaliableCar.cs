@@ -6,6 +6,6 @@ public void avaliableCar()
 	DateTime dt = DateTime.Now;
 	nowDate=dt.ToString("yyyyMMdd");
 	tempDate=int.Parse(nowDate);
-	cmdTemp=String.Format("select * from car where carid not in(select carid from contrast where isvalid=1 and {0}<endDate) and avaliable=1",nowDate);
-	//toDO select 
+	cmdTemp=String.Format("select * from car where carid not in(select carid from contrcst where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1",tempDate);
+	//TODO ... 
 }
