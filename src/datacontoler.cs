@@ -107,8 +107,10 @@ public class datacontrol{
 			String name=data.GetString(3);
 			String birthday=data.GetString(4);
 			String password=data.GetString(5);
+			data.Close();
 			return new Driver(driverid,personid,sex,name,birthday,password);
 		}
+		data.Close();
 		return null;
 	}
 	public Car getCar(String carid)
@@ -120,8 +122,10 @@ public class datacontrol{
 			bool avaliable=data.GetBoolean(2);
 			bool insurance=data.GetBoolean(3);
 			bool yearCheck=data.GetBoolean(4);
+			data.Close();
 			return new Car(carid,caryear,avaliable,insurance,yearCheck);
 		}
+		data.Close();
 		return null;
 	}
 	public bool isContract(String driverid,int startdate,int end){
@@ -144,23 +148,24 @@ public class datacontrol{
 		cmdTemp=String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0",tempDate,end);
 		//TODO ... 
 	}
-	public Contract getContract(String personid)
+	public Contract getContract(String driverid)
 	{
 		DateTime now = DateTime.Now;
-	    string  tmp = now.ToString("yyyyMMdd");
+	    String  tmp = now.ToString("yyyyMMdd");
 		int date = int.Parse(tmp);
-		cmd.CommandText = String.Format("select * from contract where driverid = '{0}' and startdate <={1} and enddate>={1} and isvalid = 1",personid,date);
+		cmd.CommandText = String.Format("select * from contract where driverid = '{0}' and startdate <={1} and enddate>={1} and isvalid = 1",driverid,date);
 		DbDataReader data = cmd.ExecuteReader();
 		if(data.Read())
 		{
-			String carid = data.GetString(1);
-			String driverid = data.GetString(2);
-			int startdate = data.GetInt32(3);
-			int enddate = data.GetInt32(4);
-			bool isagree = data.GetBoolean(5);
-			bool isvalid = data.GetBoolean(6);
+			String carid = data.GetString(0);
+			int startdate = data.GetInt32(2);
+			int enddate = data.GetInt32(3);
+			bool isagree = data.GetBoolean(4);
+			bool isvalid = data.GetBoolean(5);
+			data.Close();
 			return new Contract(carid,driverid,startdate,enddate,isagree,isvalid);
 		}
+		data.Close();
 		return null;
 	}
 	public void getAllContract(String personid)
