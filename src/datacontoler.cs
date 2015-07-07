@@ -133,7 +133,7 @@ class datacontrol{
 	public bool isCarAvaliable(Car carid,int startdate,int end){
 		return false;
 	}
-	public void avaliableCar()
+	public void avaliableCar(int end)
 	{
 		string cmdTemp;
 		string nowDate;
@@ -141,7 +141,7 @@ class datacontrol{
 		DateTime dt = DateTime.Now;
 		nowDate=dt.ToString("yyyyMMdd");
 		tempDate=int.Parse(nowDate);
-		cmdTemp=String.Format("select * from car where carid not in(select carid from contrcst where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1",tempDate);
+		cmdTemp=String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0",tempDate,end);
 		//TODO ... 
 	}
 }
