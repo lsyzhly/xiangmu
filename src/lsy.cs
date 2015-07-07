@@ -5,7 +5,7 @@ using System;
 	bool sex;
 	String name;
 	String birthday;
-	String password;
+	public String password;
 	public Driver(String did,String pid,bool se,String na,String bith,String pass){
 		driverid=did;
 		personid=pid;
