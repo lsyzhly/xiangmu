@@ -124,4 +124,13 @@ class datacontrol{
 		}
 		return null;
 	}
+	
+	public bool isContract(String driverid,int startdate,int end){
+		cmd.CommandText=String.Format("select count() from contract where driverid='{0}' and ((startdate>{1} and startdate<{2})or (enddate>{1} and enddate <{2}))",driverid,startdate,end);
+		int n=(int)cmd.ExecuteScalar();
+		return n==0;
+	}
+	public bool isCarAvaliable(Car carid,int startdate,int end){
+		return false;
+	}
 }

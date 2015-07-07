@@ -14,4 +14,7 @@ class Driver{
 		birthday=bith;
 		password=pass;
 	}
+	public bool isContract(int startdate,int enddate){
+		return false;
+	}
 }
