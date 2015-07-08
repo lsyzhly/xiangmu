@@ -2,9 +2,9 @@ using System;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Data;
 public class DriverP : UserControl
 {
-    protected HtmlTable infoTable;
 	protected Label Driverid;
 	protected Label Personelid;
 	protected Label Sex;
@@ -33,5 +33,11 @@ public class DriverP : UserControl
         name.Text = ((Driver)Session["driver"]).name;
         birthday.Text = ((Driver)Session["driver"]).birthday;
         password.Text = ((Driver)Session["driver"]).password;
+        DataSet ds = new DataSet();
+        datacontrol a = (datacontrol)Session["database"];
+        a.getUseCar(Driverid.Text).Fill(ds);
+        CarList.DataSource = ds;
+        CarList.DataBind();
     }
+    protected ListBox CarList;
 }

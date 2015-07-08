@@ -135,45 +135,34 @@ public class datacontrol{
 		int n=(int)cmd.ExecuteScalar();
 		return n==0;
 	}
-	public bool isCarAvaliable(Car carid,int startdate,int end){
-		return false;
-	}
-	public DataAdapter avaliableCar(int end)
+	public DataAdapter avaliableCar(int start,int end)
 	{
-		string cmdTemp;
-		string nowDate;
-		int tempDate;
-		DateTime dt = DateTime.Now;
-		nowDate=dt.ToString("yyyyMMdd");
-		tempDate=int.Parse(nowDate);
-		end=(end-(end-(end/10000)*10000))/10000;
-        cmd.CommandText = String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0", tempDate, end);
+        cmd.CommandText = String.Format(
+            "select * from contract where carid not in(select DISTINCT carid from contract where (isvalid=1 and not (startdate>{2} or enddate<{1}) and avaliable=1 ) or (caryear+8)*10000-{1}>=0", start, end);
 		//TODO ... 
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
-	public Contract getContract(String personid)
+    public DataAdapter getUseCar(String driverid)
+    {
+        cmd.CommandText = String.Format("select carid,startdate,enddate from contract where driverid='{0}'",driverid);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
+    public DataAdapter getContract(String driverid)
 	{
 		DateTime now = DateTime.Now;
 		String  tmp = now.ToString("yyyyMMdd");
 		int date = Convert.ToInt32(tmp);
-		cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={1} and isvalid = 1",date,date);
-		DbDataReader data = cmd.ExecuteReader();
-		if(data.Read())
-		{
-			String carid = data.GetString(1);
-			String driverid = data.GetString(2);
-			int startdate = data.GetInt32(3);
-			int enddate = data.GetInt32(4);
-			bool isagree = data.GetBoolean(5);
-			bool isvalid = data.GetBoolean(6);
-            data.Close();
-			return new Contract(carid,driverid,startdate,enddate,isagree,isvalid);
-        }
-        data.Close();
-		return null;
+        cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={1} and isagree==1 and isvalid = 1", driverid, date);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
-	public void getAllContract(String personid)
+    public DataAdapter getAllContract(String driverid)
 	{
-	     cmd.CommandText = String.Format("select * from contract where personid = \'{0}\'",personid);
+        cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\'", driverid);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
+    public DataAdapter getOkContract(String driverid)
+    {
+        cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree==1 and isvalid = 1", driverid);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
 }
