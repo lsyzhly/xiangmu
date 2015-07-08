@@ -13,7 +13,6 @@ public class DriverP : UserControl
 	protected Label birthday;
     protected TextBox passwordt;
     protected Label password;
-    protected ListBox CarList;
     public void OnName(Object sender, EventArgs e)
     {
         Driver dr = (Driver)Session["driver"];

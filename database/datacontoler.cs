@@ -138,7 +138,11 @@ public class datacontrol{
 	public DataAdapter avaliableCar(int start,int end)
 	{
         cmd.CommandText = String.Format(
+<<<<<<< HEAD
             "select * from Car where carid not in (select DISTINCT carid from contract where (isvalid=1 and not (startdate>{1} or enddate<{0}) and avaliable=1 ) or (caryear+8)*10000-{1}>=0", start, end);
+=======
+            "select * from contract where carid not in(select DISTINCT carid from contract where (isvalid=1 and not (startdate>{2} or enddate<{1}) and avaliable=1 ) or (caryear+8)*10000-{1}>=0", start, end);
+>>>>>>> origin/web
 		//TODO ... 
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
