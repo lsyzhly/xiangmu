@@ -1,4 +1,4 @@
-<%@ Control Inherits="UserLogin" src="Login.cs" %>
+<%@ Control Inherits="UserLogin"%>
 
 <table id="LoginTable" cellpadding="4" runat="server">
   <tr>

@@ -27,17 +27,21 @@ public class UserLogin : UserControl
         set { Password.Text = value; }
     }
 
-    public delegate void LoginEventHandler (Object sender,
-        String e);
+    public delegate void LoginEventHandler (Object sender,bool is_true);
 
     public event LoginEventHandler Login;
 
     public void OnLoginButtonClicked (Object sender, EventArgs e)
     {
         if (Login != null) {
-			Driver a=new datacontrol("asd.data").getDriver(Name);
-            if(a!=null && a.password==Pas) Login (this,a,password);
-            else Login (this, null);
+            Driver a = new datacontrol("D:\\asd.data").getDriver(Name);
+            if (a != null && a.password == Pas)
+            {
+                Session["driver"] = a;
+                Login(this,true);
+                Response.Write("<script>alert('sucessful');location.href='diaName.aspx';</script>");
+            }
+            else Login(this, false);
         }
     }
 }
