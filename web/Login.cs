@@ -33,13 +33,18 @@ public class UserLogin : UserControl
 
     public void OnLoginButtonClicked (Object sender, EventArgs e)
     {
+        Driver a;
         if (Login != null) {
-            Driver a = new datacontrol("D:\\asd.data").getDriver(Name);
+            if (Session["database"] == null)
+            {
+                Session["database"]=new datacontrol("D:\\asd.data");
+            }
+            a = ((datacontrol)Session["database"]).getDriver(Name);
             if (a != null && a.password == Pas)
             {
                 Session["driver"] = a;
                 Login(this,true);
-                Response.Write("<script>alert('sucessful');location.href='diaName.aspx';</script>");
+                Response.Write("<script>alert('sucessful');location.href='grxx.aspx';</script>");
             }
             else Login(this, false);
         }
