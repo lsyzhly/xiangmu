@@ -1,12 +1,24 @@
 <%@ Register TagPrefix="user" TagName="DriverControl" src="Driver.ascx"%>
-<%@ Page Language="C#" Debug="true" %>
+<%@ Page Language="C#" Inherits="grxx" Debug="true" %>
 
 <html>
   <body>
-    <h1>Drivers Information</h1>
     <form runat="server">
-      <user:DriverControl ID="Login" Onsumit="OnSubmit" RunAt="server" />
+      <table>
+        <tr>
+            <td>peronal information</td>
+            <td>car infomation</td>
+        </tr>
+        <tr>
+          <td>
+            <user:DriverControl ID="Login" Onsumit="OnSubmit" RunAt="server" />
+          </td>
+          <td>
+            <asp:DataGrid runat= "server" id="Datagride" AutoGenerateColumns="True">
+            </asp:DataGrid>
+          </td>
+        </tr>
+      </table>
     </form>
-    <asp:ListBox ID="CarList" RunAt="server" />
   </body>
 </html>
