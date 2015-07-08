@@ -7,6 +7,7 @@ using System.Data.SQLite;
 public class datacontrol{
 	DbConnection connection;
 	DbCommand cmd;
+    String str;
 	public datacontrol(String path){
 		bool flag;
 		if(File. Exists(path)){
@@ -15,6 +16,7 @@ public class datacontrol{
 			flag=true;
 		}
 		SQLiteConnection con = new SQLiteConnection ("Data Source="+path);
+        str = path;
         con.Open();
 		connection=con;
 		cmd=new SQLiteCommand(con);
@@ -106,9 +108,11 @@ public class datacontrol{
 			bool sex=data.GetBoolean(2);
 			String name=data.GetString(3);
 			String birthday=data.GetString(4);
-			String password=data.GetString(5);
+            String password = data.GetString(5);
+            data.Close();
 			return new Driver(driverid,personid,sex,name,birthday,password);
-		}
+        }
+        data.Close();
 		return null;
 	}
 	public Car getCar(String carid)
@@ -119,9 +123,11 @@ public class datacontrol{
 			int caryear=data.GetInt32(1);
 			bool avaliable=data.GetBoolean(2);
 			bool insurance=data.GetBoolean(3);
-			bool yearCheck=data.GetBoolean(4);
+            bool yearCheck = data.GetBoolean(4);
+            data.Close();
 			return new Car(carid,caryear,avaliable,insurance,yearCheck);
-		}
+        }
+        data.Close();
 		return null;
 	}
 	public bool isContract(String driverid,int startdate,int end){
@@ -132,7 +138,7 @@ public class datacontrol{
 	public bool isCarAvaliable(Car carid,int startdate,int end){
 		return false;
 	}
-	public void avaliableCar(int end)
+	public DataAdapter avaliableCar(int end)
 	{
 		string cmdTemp;
 		string nowDate;
@@ -141,8 +147,9 @@ public class datacontrol{
 		nowDate=dt.ToString("yyyyMMdd");
 		tempDate=int.Parse(nowDate);
 		end=(end-(end-(end/10000)*10000))/10000;
-		cmdTemp=String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0",tempDate,end);
+        cmd.CommandText = String.Format("select * from car where carid not in(select carid from contract where isvalid=1 and {0}<endDate and isagree=1) and avaliable=1 and (caryear+8)-{1}>=0", tempDate, end);
 		//TODO ... 
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
 	public Contract getContract(String personid)
 	{
@@ -159,8 +166,10 @@ public class datacontrol{
 			int enddate = data.GetInt32(4);
 			bool isagree = data.GetBoolean(5);
 			bool isvalid = data.GetBoolean(6);
+            data.Close();
 			return new Contract(carid,driverid,startdate,enddate,isagree,isvalid);
-		}
+        }
+        data.Close();
 		return null;
 	}
 	public void getAllContract(String personid)
