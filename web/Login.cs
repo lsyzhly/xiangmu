@@ -44,7 +44,7 @@ public class UserLogin : UserControl
             {
                 Session["driver"] = a;
                 Login(this,true);
-                Response.Write("<script>alert('sucessful');location.href='ztcz.aspx';</script>");
+                Response.Write("<script>alert('sucessful');location.href='htcx.aspx';</script>");
             }
             else Login(this, false);
         }

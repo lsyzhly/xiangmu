@@ -15,5 +15,6 @@ public partial class grxx : Page
         d.Fill(c);
         Datagride.DataSource = c;
         Datagride.DataBind();
+        Table qwe;
     }
 }
