@@ -3,12 +3,10 @@
 
 <html>
   <body>
-    <h1>Drivers login</h1>
-    <hr>
+    <h1>Drivers Information</h1>
     <form runat="server">
       <user:DriverControl ID="Login" Onsumit="OnSubmit" RunAt="server" />
     </form>
-    <hr>
-    <h3><asp:Label ID="Output" RunAt="server" /></h3>
+    <asp:ListBox ID="CarList" RunAt="server" />
   </body>
 </html>
