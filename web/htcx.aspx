@@ -1,13 +1,15 @@
-<%@ Control Inherits="htcx"%>
+<%@ Page Language="C#" Inherits="htcx" Debug="true" %>
 
 <html>
   <body>
-    <h1>Search Contract</h1>
-    <hr>
     <form runat="server">
-      <user:LoginControl ID="Login" OnLogin="OnLoginUser" BackColor="#ccccff" RunAt="server" />
+      <asp:DropDownList ID="StateList"  OnSelectedIndexChanged="OnChange" AutoPostBack="True" RunAt="server">
+        <asp:ListItem Text="当前合同" RunAt="server" />
+        <asp:ListItem Text="有效合同" RunAt="server" />
+        <asp:ListItem Text="所有合同" RunAt="server" />
+      </asp:DropDownList>
+      <asp:GridView  runat= "server" id="Contractgride" AutoGenerateColumns="True">
+      </asp:GridView>
     </form>
-    <hr>
-    <h3><asp:Label ID="Output" RunAt="server" /></h3>
   </body>
 </html>

@@ -33,11 +33,5 @@ public class DriverP : UserControl
         name.Text = ((Driver)Session["driver"]).name;
         birthday.Text = ((Driver)Session["driver"]).birthday;
         password.Text = ((Driver)Session["driver"]).password;
-        DataSet ds = new DataSet();
-        datacontrol a = (datacontrol)Session["database"];
-        a.getUseCar(Driverid.Text).Fill(ds);
-        CarList.DataSource = ds;
-        CarList.DataBind();
     }
-    protected ListBox CarList;
 }
