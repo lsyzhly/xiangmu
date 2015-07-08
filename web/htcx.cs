@@ -7,7 +7,7 @@ using System.Data.Common;
 public partial class htcx : Page
 {
     protected DropDownList StateList;
-    protected DataGrid Contractgride;
+    protected GridView Contractgride;
     public void OnChange(Object sender, EventArgs e)
     {
         DataSet a=new DataSet();
