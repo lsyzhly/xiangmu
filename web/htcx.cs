@@ -28,8 +28,15 @@ public partial class htcx : Page
         }else{
             c=null;
         }
-        c.Fill(a);
-        Contractgride.DataSource=a;
-        Contractgride.DataBind();
+        try
+        {
+            c.Fill(a);
+            Contractgride.DataSource = a;
+            Contractgride.DataBind();
+        }
+        catch (System.Data.SQLite.SQLiteException)
+        {
+            Response.Write("<script>alert('没有当前合同');</script>");
+        }
     }
 }
