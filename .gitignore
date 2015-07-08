@@ -2,3 +2,13 @@
 *.data
 *.exe
 *.module
+*.sln
+*.suo
+*.pdb
+*.csproj
+*\bin
+*\obj
+*/Properties
+*/Properties
+*.config
+*.user
