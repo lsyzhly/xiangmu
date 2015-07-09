@@ -8,6 +8,15 @@ using System.Web.UI.WebControls;
 public partial class atyht : System.Web.UI.Page
 {
     GridView AlGride;
+    public void Page_Load(Object sender, EventArgs e)
+    {
+        datacontrol a = (datacontrol)Session["database"];
+        System.Data.Common.DataAdapter d = a.getAContract();
+        System.Data.DataSet c = new System.Data.DataSet();
+        d.Fill(c);
+        AlGride.DataSource = c;
+        AlGride.DataBind();
+    }
     public void OnSelect(object sender, EventArgs e)
     {
         GridViewRow row = AlGride.SelectedRow;
