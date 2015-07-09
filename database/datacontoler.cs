@@ -208,12 +208,12 @@ public class datacontrol{
     }
     public DataAdapter getOkContract()
     {
-        cmd.CommandText = String.Format("select * from contract isagree==1 and isvalid = 1");
+        cmd.CommandText = String.Format("select * from contract where isagree=1 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public DataAdapter getAContract()
     {
-        cmd.CommandText = String.Format("select * from contract isagree==0 and isvalid = 1");
+        cmd.CommandText = String.Format("select * from contract where isagree=0 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public String getAdminPassword(String id)
