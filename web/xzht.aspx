@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ztcz2.aspx.cs" Inherits="web.ztcz2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="xzht.aspx.cs" Inherits="web.xzht" %>
 
 <!DOCTYPE html>
 
@@ -41,10 +41,45 @@ li {list-style:none;}
 </div>
 <div id="menu">
 <h2>Menu</h2>
-<h3>功能菜单在这</h3>
+
+    <u1>
+        <li><h3>合同查询</h3></li>
+        <li><h3>新增合同</h3></li>
+    </u1>
+
+
 </div>
 
-<div id="content">操作结果在这</div>
+<div id="content">
+    <table id="LoginTable"  runat="server">
+  <tr>
+    <td>ID：</td>
+    <td><asp:TextBox ID="driverid" RunAt="server" /></td>
+  </tr>
+  <tr>	
+    <td>车牌号：</td>
+    <td><asp:TextBox ID="carid"  RunAt="server" /></td>
+  </tr>
+   <tr>	
+    <td>合同起始时间：</td>
+    <td><asp:TextBox ID="startdate"  RunAt="server" /></td>
+    <td>(如1999年1月1日输入1990101)</td>
+  </tr>
+  <tr>	
+    <td>合同结束时间：</td>
+    <td><asp:TextBox ID="enddate"  RunAt="server" /></td>
+    <td>(如1999年1月1日输入1990101)</td>
+  </tr>
+  <tr>	
+    <td><asp：CheckBox ID="isagree" Text="我已阅读合同，并同意" RunAt="server" />
+  </tr>
+  <tr>
+    <td></td>
+    <td><asp:LinkButton Text="Log In" OnClick="OnLoginButtonClicked"
+      RunAt="server" /></td>
+  </tr>
+</table>
+</div>
 
 
 <div id="footer">Copyright @lzl</div>
