@@ -13,9 +13,16 @@ public partial class atyht : System.Web.UI.Page
         datacontrol a = (datacontrol)Session["database"];
         System.Data.Common.DataAdapter d = a.getAContract();
         System.Data.DataSet c = new System.Data.DataSet();
-        d.Fill(c);
-        AlGride.DataSource = c;
-        AlGride.DataBind();
+        try
+        {
+            d.Fill(c);
+            AlGride.DataSource = c;
+            AlGride.DataBind();
+        }
+        catch (System.Data.SQLite.SQLiteException)
+        {
+            Response.Write("<script>alert('没有待同意合同');</script>");
+        }
     }
     public void OnSelect(object sender, EventArgs e)
     {
