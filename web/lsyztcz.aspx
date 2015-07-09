@@ -1,5 +1,4 @@
-<%@ Register TagPrefix="user" TagName="DriverControl" src="Driver.ascx"%>
-<%@ Page Language="C#" Inherits="grxx" Debug="true" %>
+<%@ Page Language="C#" Inherits="htcx" Debug="true" %>
 
 <html>
 <head>
@@ -16,19 +15,17 @@ h1 {margin-bottom:0;}
 h2 {margin-bottom:0;font-size:18px;}
 h3 {margin-bottom:0;font-size:14px;text-align:center;}
 ul {margin:0;}
-li {list-style:none;}  
+li {list-style:none;}
 </style>
 </head>
-
-  <body>
-   <div id="container">
-
+<body>
+ <div id="container">
 <div id="header1">
 <h2>  <a href="htcx.aspx">合同操作</a></h2>
 </div>
 
 <div id="header2">
-<h2><a href="clcx.aspx" >车辆查询</a></h2>
+<h2><a href="clcx.aspx">车辆查询</a></h2>
 </div>
 
 <div id="header3">
@@ -36,30 +33,24 @@ li {list-style:none;}
 </div>
 <div id="menu">
 <h2>Menu</h2>
-<h3 >查询车辆</h3>
+<h3><a href="htcx.aspx">合同查询</a></h3>
+<h3><a href="xzht.aspx">新增合同</a></h3>
 </div>
+<button onclick="asd()">asd</button>
+
 <div id="content">
-    <form runat="server">
-      <table>
-        <tr>
-            <td>peronal information</td>
-            <td>car infomation</td>
-        </tr>
-        <tr>
-          <td>
-            <user:DriverControl ID="Login"  RunAt="server" />
-          </td>
-          <td>
-            <asp:GridView  runat= "server" id="Datagride" AutoGenerateColumns="True">
-            </asp:GridView>
-          </td>
-        </tr>
-      </table>
-    </form>
-</div>
- <div id="footer">Copyright @lzl</div>
-
+    <iframe id="qwe" src="null.aspx"></iframe>
 </div>
 
+
+<div id="footer">Copyright @lzl</div>
+
+</div>
   </body>
 </html>
+<script type="text/javascript">
+function asd()
+{
+    qwe.src = "grxx.aspx";
+}
+</script>
