@@ -155,14 +155,32 @@ public class datacontrol{
         cmd.CommandText = String.Format("select * from contract where driverid='{0}' and startdate <={1} and enddate>={1} and isagree==1 and isvalid = 1", driverid, date);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
+    public DataAdapter getContract()
+    {
+        DateTime now = DateTime.Now;
+        String tmp = now.ToString("yyyyMMdd");
+        int date = Convert.ToInt32(tmp);
+        cmd.CommandText = String.Format("select * from contract where startdate <={1} and enddate>={1} and isagree==1 and isvalid = 1", date);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
     public DataAdapter getAllContract(String driverid)
 	{
         cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\'", driverid);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
+    public DataAdapter getAllContract()
+    {
+        cmd.CommandText = String.Format("select * from contract");
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
     public DataAdapter getOkContract(String driverid)
     {
         cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree==1 and isvalid = 1", driverid);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
+    public DataAdapter getOkContract()
+    {
+        cmd.CommandText = String.Format("select * from contract isagree==1 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public String getAdminPassword(String id)
