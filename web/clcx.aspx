@@ -33,24 +33,6 @@ ul {margin:0;}
 li {list-style:none;}     </style>
 </head>
 <body>
-    <div id="container">
-
-<div id="header1">
-<h2>  <a href="htcz.aspx">合同操作</a></h2>
-</div>
-
-<div id="header2">
-<h2><a href="clcx.aspx" >车辆查询</a></h2>
-</div>
-
-<div id="header3">
-<h2><a href="grxx.aspx">个人信息</a></h2>
-</div>
-<div id="menu">
-<h2>Menu</h2>
-<h3 >个人信息</h3>
-</div>
-<div id="content">
     <form id="form1" runat="server">
 
            <table width="100%"  cellpadding="1" cellspacing="1">
@@ -67,8 +49,5 @@ li {list-style:none;}     </style>
     <br>
     <asp:Label ID="Output" RunAt="server"/>
     </form>
-</div>
-    <div id="footer">Copyright @lzl</div>
-    </div>
 </body>
 </html>

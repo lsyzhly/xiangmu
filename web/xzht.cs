@@ -17,12 +17,12 @@ public partial class xzht : System.Web.UI.Page
         String id = carid.Text;
         int start=int.Parse(startText.Text);
         int end=int.Parse(endText.Text);
-        if (b.isCarContract(id,start,end))
+        if (!b.isCarContract(id,start,end))
         {
             Response.Write("<script>alert('car not free！');</script>");
             return;
         }
-        if (b.isDriverContract(a.driverid, start, end))
+        if (!b.isDriverContract(a.driverid, start, end))
         {
             Response.Write("<script>alert('driver not free！');</script>");
             return;
