@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class atyht : System.Web.UI.Page
 {
-    GridView AlGride;
+    protected GridView AlGride;
     public void Page_Load(Object sender, EventArgs e)
     {
         datacontrol a = (datacontrol)Session["database"];
