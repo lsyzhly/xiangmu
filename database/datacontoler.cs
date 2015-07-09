@@ -215,4 +215,9 @@ public class datacontrol{
         cmd.CommandText = String.Format("select password from adminstrator where id='{0}'", id);
         return (String)cmd.ExecuteScalar();
     }
+    public DataAdapter getAllDriver()
+    {
+        cmd.CommandText = String.Format("select * from driver");
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
 }
