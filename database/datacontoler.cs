@@ -92,11 +92,11 @@ public class datacontrol{
         cmd.ExecuteNonQuery();
 	}
 	public void updateContractIsagree(String carid,String driverid,int startdate,bool isagree){
-		cmd.CommandText=String.Format("update Contract set isagree={0} where carid='{1}' and driverid={2} and startdate={3}",isagree?1:0,carid,driverid,startdate);
+		cmd.CommandText=String.Format("update Contract set isagree={0} where carid='{1}' and driverid='{2}' and startdate={3}",isagree?1:0,carid,driverid,startdate);
         cmd.ExecuteNonQuery();
 	}
 	public void updateContractIsvalid(String carid,String driverid,int startdate,bool isvalid){
-		cmd.CommandText=String.Format("update Contract set isvalid={0} where carid='{1}' and driverid={2} and startdate={3}",isvalid?1:0,carid,driverid,startdate);
+		cmd.CommandText=String.Format("update Contract set isvalid={0} where carid='{1}' and driverid='{2}' and startdate={3}",isvalid?1:0,carid,driverid,startdate);
         cmd.ExecuteNonQuery();
 	}
 	
