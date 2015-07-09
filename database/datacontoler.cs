@@ -134,8 +134,19 @@ public class datacontrol{
     {
         cmd.CommandText = String.Format("select * from car");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
-
     }
+	public bool isDriverContract(String driverid,int startdate,int end){
+        cmd.CommandText = String.Format("select count(carid) from contract where driverid='{0}' and isagree=1 and isvalid and NOT (startdate>{2} or enddate<{1})", driverid, startdate, end);
+		long n=(long)cmd.ExecuteScalar();
+		return n==0;
+	}
+    public bool isCarContract(String carid, int startdata, int end)
+    {
+        cmd.CommandText = String.Format("select count(carid) from Car where carid not in (select DISTINCT carid from contract where isvalid=1 and not (startdate>{1} or enddate<{0}) and isagree=1) and carid='{2}' and avaliable=1 and insurancen=1 and yearcheck=1 and (caryear+8)*10000>={1}", startdata, end, carid);
+        long a = (long)cmd.ExecuteScalar();
+		return a!=0;
+	}
+
 
     public DataAdapter getUsefulCar()
     {
