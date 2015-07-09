@@ -14,13 +14,13 @@ div#footer {background-color:#99bbbb;clear:both;text-align:center;}
 <body>
     <div id="container">
         <div id="header1">
-            <h2> <button onclick="htczf()">合同操作</button></h2>
+            <h2> <button onclick="ahtgl()">合同管理</button></h2>
         </div>
         <div id="header2">
-            <h2> <button onclick="clcxf()">车辆查询</button></h2>
+            <h2> <button onclick="aclgl()">车辆管理</button></h2>
         </div>
         <div id="header3">
-            <h2><button onclick="grxxf()">个人信息</button></h2>
+            <h2><button onclick="ajsygl()">驾驶员管理</button></h2>
         </div>
     </div>
     <div id="menu">
@@ -29,15 +29,14 @@ div#footer {background-color:#99bbbb;clear:both;text-align:center;}
   </body>
 </html>
 <script type="text/javascript">
-    function htczf()
-{
+    function ahtgl() {
 
-    page.src = "lsy1.aspx";
-}
-function clcxf() {
-    page.src = "lsy2.aspx";
-}
-function grxxf() {
-    page.src = "lsy3.aspx";
-}
+        page.src = "ly1.aspx";
+    }
+    function aclgl() {
+        page.src = "ly2.aspx";
+    }
+    function ajsygl() {
+        page.src = "ly3.aspx";
+    }
 </script>
