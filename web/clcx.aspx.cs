@@ -19,7 +19,6 @@ namespace web
         }
         public void   OnSreach (Object sender, EventArgs e)
   {
-      DataSet b = new DataSet();
       DataAdapter c;
       String Year;
       int useYear,myStrat;
@@ -28,14 +27,14 @@ namespace web
       useYear=int.Parse(Year);
            //数据库绑定 
 
-      
-      DataSet ds = new DataSet();
+
+      DataSet b = new DataSet();
       datacontrol a = (datacontrol)Session["database"];
       c = a.avaliableCar(myStrat, useYear);
       try 
       {
           c.Fill(b);
-          this.carGrid.DataSource = a;
+          this.carGrid.DataSource = b;
           this.carGrid.DataBind();
       }
      catch(System.Data.SQLite.SQLiteException)

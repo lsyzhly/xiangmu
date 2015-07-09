@@ -45,7 +45,7 @@ public class UserLogin : UserControl
                 if (a != null && a.password == Pas)
                 {
                     Session["driver"] = a;
-                    Response.Write("<script>alert('sucessful');location.href='htcx.aspx';</script>");
+                    Response.Write("<script>alert('sucessful');location.href='clcx.aspx';</script>");
                 }
                 else Login(this);
             }
