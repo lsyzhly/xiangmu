@@ -139,8 +139,28 @@ public class datacontrol{
     {
         cmd.CommandText = String.Format("select count(carid) from Car where carid not in (select DISTINCT carid from contract where isvalid=1 and not (startdate>{1} or enddate<{0}) and isagree=1) and carid='{2}' and avaliable=1 and insurancen=1 and yearcheck=1 and (caryear+8)*10000>={1}", startdata, end, carid);
         long a = (long)cmd.ExecuteScalar();
-        return a!=0;
+		return a!=0;
+	}
+    public DataAdapter getAllCar()
+    {
+        cmd.CommandText = String.Format("select * from car");
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
+
+    public DataAdapter getUsefulCar()
+    {
+        DateTime now = DateTime.Now;
+        String tmp = now.ToString("yyyyMMdd");
+        int date = Convert.ToInt32(tmp);
+        cmd.CommandText = String.Format("select * from car where ((avaliable=1 and insurancen=1 and yearcheck=1) and carid not in(select carid from contract where startdate <={0} and enddate>={0} and isagree=1 and isvalid = 1))",date);
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+
+    }
+	public bool isContract(String driverid,int startdate,int end){
+		cmd.CommandText=String.Format("select count() from contract where driverid='{0}' and ((startdate>{1} and startdate<{2})or (enddate>{1} and enddate <{2}))",driverid,startdate,end);
+		int n=(int)cmd.ExecuteScalar();
+		return n==0;
+	}
 	public DataAdapter avaliableCar(int start,int end)
 	{
         cmd.CommandText = String.Format(
@@ -158,7 +178,7 @@ public class datacontrol{
 		DateTime now = DateTime.Now;
 		String  tmp = now.ToString("yyyyMMdd");
 		int date = Convert.ToInt32(tmp);
-        cmd.CommandText = String.Format("select * from contract where driverid='{0}' and startdate <={1} and enddate>={1} and isagree==1 and isvalid = 1", driverid, date);
+        cmd.CommandText = String.Format("select * from contract where driverid='{0}' and startdate <={1} and enddate>={1} and isagree=1 and isvalid = 1", driverid, date);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
     public DataAdapter getContract()
@@ -166,7 +186,7 @@ public class datacontrol{
         DateTime now = DateTime.Now;
         String tmp = now.ToString("yyyyMMdd");
         int date = Convert.ToInt32(tmp);
-        cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={0} and isagree==1 and isvalid = 1", date);
+        cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={0} and isagree=1 and isvalid = 1", date);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public DataAdapter getAllContract(String driverid)
@@ -179,14 +199,19 @@ public class datacontrol{
         cmd.CommandText = String.Format("select * from contract");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
+    public DataAdapter getAllDriver()
+    {
+        cmd.CommandText = String.Format("select * from driver");
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
     public DataAdapter getOkContract(String driverid)
     {
-        cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree=1 and isvalid = 1", driverid);
+        cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree==1 and isvalid = 1", driverid);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public DataAdapter getOkContract()
     {
-        cmd.CommandText = String.Format("select * from contract where isagree=1 and isvalid = 1");
+        cmd.CommandText = String.Format("select * from contract isagree==1 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public String getAdminPassword(String id)

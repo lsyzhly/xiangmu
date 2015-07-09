@@ -1,0 +1,8 @@
+<%@ Page Language="C#"Debug="true" %>
+
+<html>
+<head>
+    <form runat="server">
+   <button onclick="a">∫œÕ¨≤È—Ø</button>
+    </form>
+</html>
