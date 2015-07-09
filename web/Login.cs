@@ -62,7 +62,7 @@ public class UserLogin : UserControl
             String a;
             a = ((datacontrol)Session["database"]).getAdminPassword(Name);
             if(a!=null && a==Pas){
-                Response.Write("<script>alert('sucessful');location.href='ahtcx.aspx';</script>");
+                Response.Write("<script>alert('sucessful');location.href='lyztcz.aspx';</script>");
             }
             else
             {

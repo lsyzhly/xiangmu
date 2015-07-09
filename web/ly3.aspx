@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="xzht.cs" Inherits="xzht" %>
+<%@ Page Language="C#" AutoEventWireup="true"  %>
 
 <!DOCTYPE html>
 
@@ -25,6 +25,6 @@ li {list-style:none;}
 </html>
 <script type="text/javascript">
     function asyjsy() {
-        ly3page.src = "ajsygl";
+        ly3page.src = "ajsygl.aspx";
     }
 </script>
