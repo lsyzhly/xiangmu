@@ -14,18 +14,10 @@
 </html>
 
 <script language="C#" runat="server">
-  void OnLoginUser (Object sender, bool e)
+  void OnLoginUser (Object sender)
   {
-      if (e)
-      {
-          Driver a = (Driver)Session["driver"];
-          Output.Text = "Hello, " + a.password;
-      }
-      else
-      {
-          Output.Text = "the id or password you input wrong!";
-          Login.Name = "";
-          Login.Pas = "";
-      }
+        Output.Text = "the id or password you input wrong!";
+        Login.Name = "";
+        Login.Pas = "";
   }
 </script>

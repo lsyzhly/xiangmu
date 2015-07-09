@@ -24,7 +24,7 @@ public class datacontrol{
 			cmd.CommandText="create table driver(driverid varchar PRIMARY KEY,personid varchar not null,sex bool not null,name varchar not null,birthday char(8) not null,password varchar not null)";
 			cmd.ExecuteNonQuery();
 			
-			cmd.CommandText="create table adminstrator (id varcharPRIMARY KEY,password varchar not null)";
+			cmd.CommandText="create table adminstrator (id varchar PRIMARY KEY,password varchar not null)";
 			cmd.ExecuteNonQuery();
 			cmd.CommandText="insert into adminstrator values(\'adminstrator\',\'1234\')";
 			cmd.ExecuteNonQuery();
@@ -152,7 +152,7 @@ public class datacontrol{
 		DateTime now = DateTime.Now;
 		String  tmp = now.ToString("yyyyMMdd");
 		int date = Convert.ToInt32(tmp);
-        cmd.CommandText = String.Format("select * from contract where startdate <={0} and enddate>={1} and isagree==1 and isvalid = 1", driverid, date);
+        cmd.CommandText = String.Format("select * from contract where driverid='{0}' and startdate <={1} and enddate>={1} and isagree==1 and isvalid = 1", driverid, date);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
     public DataAdapter getAllContract(String driverid)
@@ -164,5 +164,10 @@ public class datacontrol{
     {
         cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree==1 and isvalid = 1", driverid);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
+    public String getAdminPassword(String id)
+    {
+        cmd.CommandText = String.Format("select password from adminstrator where id='{0}'", id);
+        return (String)cmd.ExecuteScalar();
     }
 }
