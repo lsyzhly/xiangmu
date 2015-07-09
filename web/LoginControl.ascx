@@ -2,7 +2,7 @@
 
 <table id="LoginTable" cellpadding="4" runat="server">
   <tr>
-    <td>User Name:</td>
+    <td>id:</td>
     <td><asp:TextBox ID="UserName" RunAt="server" /></td>
   </tr>
   <tr>	
@@ -11,7 +11,12 @@
       RunAt="server" /></td>
   </tr>
   <tr>
-    <td></td>
+    <td>
+        <asp:DropDownList ID="Chose" AutoPostBack="True" RunAt="server">
+        <asp:ListItem Text="司机登录" RunAt="server" />
+        <asp:ListItem Text="管理员登录" RunAt="server" />
+      </asp:DropDownList>
+    </td>
     <td><asp:LinkButton Text="Log In" OnClick="OnLoginButtonClicked"
       RunAt="server" /></td>
   </tr>
