@@ -62,11 +62,10 @@ li {list-style:none;}     </style>
            <tr><td></td><td><asp:Button  text="查询" OnClick="OnSreach" RunAt="server" /></td></tr>
                </table>
           
-       <asp:GridView  runat= "server" id="carGrid" AutoGenerateColumns="True">
+       <asp:GridView  runat= "server" id="carGrid" AutoGenerateSelectButton="True" OnSelectedIndexChanged="OnSelect" AutoGenerateColumns="True">
       </asp:GridView>
     <br>
     <asp:Label ID="Output" RunAt="server"/>
-
     </form>
 </div>
     <div id="footer">Copyright @lzl</div>
