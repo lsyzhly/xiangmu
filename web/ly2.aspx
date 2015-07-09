@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="xzht.cs" Inherits="xzht" %>
+<%@ Page Language="C#" AutoEventWireup="true"  %>
 
 <!DOCTYPE html>
 
