@@ -46,7 +46,7 @@ public class UserLogin : UserControl
                 {
                     Session["driver"] = a;
 
-                    Response.Write("<script>alert('sucessful');location.href='ztcz2.aspx';</script>");
+                    Response.Write("<script>alert('sucessful');location.href='lsyztcz.aspx';</script>");
 
                 }
                 else Login(this);
@@ -62,7 +62,7 @@ public class UserLogin : UserControl
             String a;
             a = ((datacontrol)Session["database"]).getAdminPassword(Name);
             if(a!=null && a==Pas){
-                Response.Write("<script>alert('sucessful');location.href='ztcz2.aspx';</script>");
+                Response.Write("<script>alert('sucessful');location.href='ahtcx.aspx';</script>");
             }
             else
             {

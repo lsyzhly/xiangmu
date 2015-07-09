@@ -5,7 +5,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 public partial class grxx : Page
 {
-    protected DataGrid Datagride;
+    protected GridView Datagride;
     public void Page_Load(Object sender, EventArgs e)
     {
         datacontrol a = (datacontrol)Session["database"];
@@ -15,6 +15,5 @@ public partial class grxx : Page
         d.Fill(c);
         Datagride.DataSource = c;
         Datagride.DataBind();
-        Table qwe;
     }
 }
