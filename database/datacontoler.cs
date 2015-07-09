@@ -168,7 +168,6 @@ public class datacontrol{
         cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\'", driverid);
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
-    public DataAdapter
     public DataAdapter getAllContract()
     {
         cmd.CommandText = String.Format("select * from contract");
