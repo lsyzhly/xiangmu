@@ -36,14 +36,10 @@
     </div>
         <div>
           
-       <asp:GridView  runat= "server" id="carGrid" AutoGenerateColumns="True">
+       <asp:GridView  runat= "server" id="carGrid" AutoGenerateSelectButton="True" OnSelectedIndexChanged="OnSelect" AutoGenerateColumns="True">
       </asp:GridView>
     <br>
     <asp:Label ID="Output" RunAt="server"/>
-</form>--%>
-
-        </div>
-    </div>
-    </form>
+</form>
 </body>
 </html>

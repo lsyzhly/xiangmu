@@ -12,7 +12,8 @@ namespace web
    
     public partial class clcx : System.Web.UI.Page
     {
-        
+        int myStrat;
+        int useYear;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -21,7 +22,6 @@ namespace web
   {
       DataAdapter c;
       String Year;
-      int useYear,myStrat;
       myStrat=int.Parse(this.startYear.Text);
       Year=this.endYear.Text;
       useYear=int.Parse(Year);
@@ -41,8 +41,18 @@ namespace web
       {
           Response.Write("<script>alert('没有合适车辆');</script>");
       }
-     
-      
-  }
+        }
+
+        public void OnSelect(object sender, EventArgs e)
+        {
+            String Year;
+            myStrat = int.Parse(this.startYear.Text);
+            Year = this.endYear.Text;
+            useYear = int.Parse(Year);
+          datacontrol a=(datacontrol)Session["database"];
+          GridViewRow row = carGrid.SelectedRow;
+          String driverid = ((Driver)Session["driver"]).driverid;
+          a.insert(row.Cells[1].Text,driverid,myStrat,useYear,false,true);
+      }
     }
 }
