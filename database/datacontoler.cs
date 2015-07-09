@@ -164,8 +164,9 @@ public class datacontrol{
 	}
 	public DataAdapter avaliableCar(int start,int end)
 	{
+     
         cmd.CommandText = String.Format(
-            "select * from Car where carid not in (select DISTINCT carid from contract where isvalid=1 and not (startdate>{1} or enddate<{0}) and isagree=1) and avaliable=1 and insurancen=1 and yearcheck=1 and (caryear+8)*10000>={1}", start, end);
+            "select * from Car where carid not in (select DISTINCT carid from contract where isvalid=1 and not (startdate>{1} or enddate<{0}) and isagree=1) and avaliable=1 and insurancen=1 and yearcheck=1 and (caryear+8)*10000>={1} and {0}>caryear*10000 and {1}>caryear*10000", start, end);
 		//TODO ... 
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
 	}
@@ -207,12 +208,12 @@ public class datacontrol{
     }
     public DataAdapter getOkContract()
     {
-        cmd.CommandText = String.Format("select * from contract where isagree=1 and isvalid = 1");
+        cmd.CommandText = String.Format("select * from contract isagree==1 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public DataAdapter getAContract()
     {
-        cmd.CommandText = String.Format("select * from contract where isagree=0");
+        cmd.CommandText = String.Format("select * from contract isagree==0 and isvalid = 1");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
     public String getAdminPassword(String id)
