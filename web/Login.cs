@@ -30,6 +30,7 @@ public class UserLogin : UserControl
     public delegate void LoginEventHandler (Object sender);
 
     public event LoginEventHandler Login;
+ 
 
     public void OnLoginButtonClicked (Object sender, EventArgs e)
     {

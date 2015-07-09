@@ -19,5 +19,6 @@
     </td>
     <td><asp:LinkButton Text="Log In" OnClick="OnLoginButtonClicked"
       RunAt="server" /></td>
+       <td><a href="zcym.aspx">зЂВс</a></td>
   </tr>
 </table>
