@@ -35,7 +35,7 @@ li {list-style:none;}
 </div>
 <div id="menu">
 <h2>Menu</h2>
-
+<iframe id="nn" style="width:100%;height:100%;" src="null.aspx"></iframe>
 </div>
 
 
@@ -66,6 +66,7 @@ li {list-style:none;}
 <script type="text/javascript">
 function htgl()
 {
-    mm.src = "ztcz.aspx";
+    nn.src = "htgl.aspx";
+    mm.src = "null.aspx";
 }
 </script>
