@@ -179,6 +179,11 @@ public class datacontrol{
         cmd.CommandText = String.Format("select * from contract");
         return new SQLiteDataAdapter((SQLiteCommand)cmd);
     }
+    public DataAdapter getAllDriver()
+    {
+        cmd.CommandText = String.Format("select * from driver");
+        return new SQLiteDataAdapter((SQLiteCommand)cmd);
+    }
     public DataAdapter getOkContract(String driverid)
     {
         cmd.CommandText = String.Format("select * from contract where driverid = \'{0}\' and isagree=1 and isvalid = 1", driverid);

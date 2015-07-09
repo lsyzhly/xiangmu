@@ -23,15 +23,15 @@ li {list-style:none;}
 <body>
  <div id="container">
 <div id="header1">
-<h2>  <a href="guanliyuanmoban.aspx">合同管理</a></h2>
+<h2>  <button onclick="htgl()">合同管理</button></h2>
 </div>
 
 <div id="header2">
-<h2><a href="guanliyuanmoban.aspx">车辆管理</a></h2>
+<h2><button onclick="clgl()">车辆管理</button></h2>
 </div>
 
 <div id="header3">
-<h2><a href="guanliyuanmoban.aspx">驾驶员管理</a></h2>
+<h2><button onclick="jsygl()">驾驶员管理</button></h2>
 </div>
 <div id="menu">
 <h2>Menu</h2>
@@ -41,12 +41,11 @@ li {list-style:none;}
 
 <div id="content">
 
+<iframe id="mm" style="width:100%;height:100%;" src="null.aspx"></iframe>
 
 
 
 
-
-    代码写在这
 
 
 
@@ -64,3 +63,9 @@ li {list-style:none;}
 
 </body>
 </html>
+<script type="text/javascript">
+function htgl()
+{
+    mm.src = "ztcz.aspx";
+}
+</script>

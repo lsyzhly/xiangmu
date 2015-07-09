@@ -51,6 +51,6 @@ li {list-style:none;}
 <script type="text/javascript">
 function asd()
 {
-    qwe.src = "grxx.aspx";
+    qwe.src = "ztcz.aspx";
 }
 </script>
